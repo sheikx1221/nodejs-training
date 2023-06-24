@@ -1,0 +1,26 @@
+doctype html
+html
+  head
+    title User List
+  body
+    h1 User List
+    table
+      thead
+        tr
+          th ID
+          th First Name
+          th Last Name
+          th Email
+          th Username 
+          th Date of Birth 
+          th Joined Us On
+      tbody
+        each user in users
+          tr
+            td= user._id
+            td= user.firstName
+            td= user.lastName
+            td= user.email 
+            td= user.username 
+            td= user.birthdate 
+            td= user.registeredAt
