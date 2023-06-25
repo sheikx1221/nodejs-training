@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "dev": "nodemon ./bin/www"
+    "dev": "nodemon ./bin/www",
+    "nvm": "nvm use 18.16.0 && npm run dev"
   },
   "dependencies": {
     "@faker-js/faker": "^8.0.2",

@@ -9,6 +9,7 @@ const schema = new mongoose.Schema({
     password: { type: String, required: false },
     birthdate: { type: String, required: false },
     registeredAt: { type: String, required: false },
+    role: { type: String, enum: ['Admin', 'User'], default: 'User' }
 });
 
 module.exports = mongoose.model('User', schema);
