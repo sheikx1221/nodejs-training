@@ -10,7 +10,7 @@ module.exports = function(req, res, next) {
         if (authorization) {
             const decoded = jwt.verify(authorization, 'jsonWebToken');
             if (decoded) {
-                Object.assign(req.body, { verified: true, isAdmin: decoded.role == "Admin" });
+                Object.assign(req.body, { verified: true, isAdmin: decoded.role == "Admin", userId: decoded._id });
                 next();
             }
             else {

@@ -15,6 +15,7 @@ mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
   });
 
 const userRouter = require('./routes/user');
+const cartRouter = require('./routes/cart');
 const indexRouter = require('./routes/index');
 const filesRouter = require('./routes/files');
 const productRouter = require('./routes/products');
@@ -31,6 +32,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
+app.use('/cart', cartRouter);
 app.use('/users', userRouter);
 app.use('/files', filesRouter);
 app.use('/products', productRouter);
