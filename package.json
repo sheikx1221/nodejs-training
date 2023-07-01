@@ -5,21 +5,33 @@
   "scripts": {
     "start": "node ./bin/www",
     "dev": "nodemon ./bin/www",
-    "nvm": "nvm use 18.16.0 && npm run dev"
+    "nvm": "nvm use 18.16.0 && npm run dev",
+    "lint": "eslint .",
+    "pre-commit": "npm run lint",
+    "prepare": "husky install"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run pre-commit"
+    }
   },
   "dependencies": {
     "@faker-js/faker": "^8.0.2",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
+    "dotenv": "^16.3.1",
     "express": "~4.16.1",
     "http-errors": "~1.6.3",
     "jade": "~1.11.0",
     "jsonwebtoken": "^9.0.0",
     "mongodb": "^5.6.0",
     "mongoose": "^7.3.1",
-    "morgan": "~1.9.1"
+    "morgan": "~1.9.1",
+    "pm2": "^5.3.0"
   },
   "devDependencies": {
+    "eslint": "^8.44.0",
+    "husky": "^8.0.3",
     "nodemon": "^2.0.22"
   }
 }

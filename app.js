@@ -1,3 +1,4 @@
+require('dotenv').config()
 const createError = require('http-errors');
 const express = require('express');
 const path = require('path');
@@ -5,7 +6,7 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const mongoose = require('mongoose');
 
-const uri = "mongodb+srv://sheikxhassan1221:9qO8xo7fCFs5WYKd@cluster0.vgxesxg.mongodb.net/?retryWrites=true&w=majority&ssl=true";
+const uri = `mongodb+srv://${process.env.USERNAME}:${process.env.PASSWORD}@cluster0.vgxesxg.mongodb.net/?retryWrites=true&w=majority&ssl=true`;
 mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => {
     console.log("Connected with MongoDB");
