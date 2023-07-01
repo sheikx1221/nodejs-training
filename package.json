@@ -7,7 +7,8 @@
     "dev": "nodemon ./bin/www",
     "nvm": "nvm use 18.16.0 && npm run dev",
     "lint": "eslint .",
-    "pre-commit": "npm run lint"
+    "pre-commit": "npm run lint",
+    "prepare": "husky install"
   },
   "husky": {
     "hooks": {
