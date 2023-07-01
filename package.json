@@ -5,7 +5,14 @@
   "scripts": {
     "start": "node ./bin/www",
     "dev": "nodemon ./bin/www",
-    "nvm": "nvm use 18.16.0 && npm run dev"
+    "nvm": "nvm use 18.16.0 && npm run dev",
+    "lint": "eslint .",
+    "precommit": "npm run lint"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run precommit"
+    }
   },
   "dependencies": {
     "@faker-js/faker": "^8.0.2",
@@ -20,6 +27,8 @@
     "morgan": "~1.9.1"
   },
   "devDependencies": {
+    "eslint": "^8.44.0",
+    "husky": "^8.0.3",
     "nodemon": "^2.0.22"
   }
 }
