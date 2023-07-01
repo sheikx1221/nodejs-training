@@ -19,6 +19,7 @@ function createRandomUser() {
         password: faker.internet.password(),
         birthdate: faker.date.birthdate(),
         registeredAt: faker.date.past(),
+        role: 'User'
     };
 }
 
@@ -33,7 +34,7 @@ router.get('/create', auth, (req, res, next) => {
             res.status(200).json({ success: true, data: result })
         })
         .catch((err) => {
-            console.log("err = ",err);
+            console.log("err = ", err);
             res.status(500).json({ success: false, err: err.message || err });
         });
 });
@@ -41,13 +42,13 @@ router.get('/create', auth, (req, res, next) => {
 router.get('/list', auth, (req, res, next) => {
     if (!req.body.verified) res.status(401).json({ success: false, err: 'Unauthorized' });
 
-    User.find({ }, { password: 0 })
-    .exec()
-    .then((result) => {
-            const jadeToTemplate = jade.compileFile(path.join(__dirname, '../views/users.jade'));
-            const html = jadeToTemplate({ users: result });
-            // res.status(200).json({ success: true, data: result });
-            res.send(html);
+    User.find({}, { password: 0 })
+        .exec()
+        .then((result) => {
+            // const jadeToTemplate = jade.compileFile(path.join(__dirname, '../views/users.jade'));
+            // const html = jadeToTemplate({ users: result });
+            res.status(200).json({ success: true, data: result });
+            // res.send(html);
         })
         .catch((err) => {
             res.status(500).json({ success: false, err: err.message || err });
@@ -74,6 +75,7 @@ router.post('/login', (req, res, next) => {
         User.find({ email: email })
             .exec()
             .then((result) => {
+                result = result[0]._doc;
                 if (password == result.password) {
                     const { firstName, lastName, password, birthDate, registeredAt, ...user } = result;
                     const token = jwt.sign(user, 'jsonWebToken', { expiresIn: '12h' });
@@ -92,7 +94,7 @@ router.post('/login', (req, res, next) => {
                 res.status(500).json({ success: false, err: err.message || err });
             });
     }
-    catch(err) {
+    catch (err) {
         res.status(500).json({ success: false, err: err.message || err });
     }
 });
