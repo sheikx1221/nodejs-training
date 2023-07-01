@@ -59,3 +59,10 @@
 [Get Cart](http://localhost:3000/cart/items)
 [Add item to cart](http://localhost:3000/cart/add-item)
 [Place Order](http://localhost:3000/cart/place-order)
+
+## Assignment 4
+
+- Eslint activated
+- Husky check linting before commit
+- dotenv
+- pm2 installed
