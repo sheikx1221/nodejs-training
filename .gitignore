@@ -1,2 +1,21 @@
-/node_modules
+# Ignore node_modules directory
+node_modules/
+
+# Ignore logs and generated files
+logs/
+dist/
+build/
+
+# Ignore environment variables file
 .env
+
+# Ignore IDE and editor-specific files
+.vscode/
+.idea/
+*.sublime-*
+*.swp
+
+# Ignore system and temporary files
+.DS_Store
+Thumbs.db
+*.tmp
